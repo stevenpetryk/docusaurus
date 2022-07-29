@@ -6,6 +6,7 @@
  */
 
 export {build} from './commands/build';
+export {buildNoSSG} from './commands/build-no-ssg';
 export {clear} from './commands/clear';
 export {deploy} from './commands/deploy';
 export {externalCommand} from './commands/external';

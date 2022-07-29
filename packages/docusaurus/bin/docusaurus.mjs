@@ -13,6 +13,7 @@ import cli from 'commander';
 import {DOCUSAURUS_VERSION} from '@docusaurus/utils';
 import {
   build,
+  buildNoSSG,
   swizzle,
   deploy,
   start,
@@ -54,6 +55,23 @@ cli
   // @ts-expect-error: Promise<string> is not assignable to Promise<void>... but
   // good enough here.
   .action(build);
+
+cli
+  .command('build-no-ssg')
+  .description('Build website without server-side generation.')
+  .option(
+    '--config <config>',
+    'path to docusaurus config file (default: `[siteDir]/docusaurus.config.js`)',
+  )
+  .option(
+    '-l, --locale <locale>',
+    'build the site in a specified locale. Build all known locales otherwise',
+  )
+  .option(
+    '--no-minify',
+    'build website without minimizing JS bundles (default: false)',
+  )
+  .action(buildNoSSG);
 
 cli
   .command('swizzle [themeName] [componentName] [siteDir]')
